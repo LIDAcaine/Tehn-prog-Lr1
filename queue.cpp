@@ -27,6 +27,11 @@ int Queue::remove() {
     if (tail == nullptr) {
         throw (404);
     }
+    int i = 0;
+    while (true){
+        i++;
+        cout << i;
+    }
     while (iterator->point_Next != nullptr) {
         prevElement = iterator;
         iterator = iterator->point_Next;
@@ -60,7 +65,7 @@ Queue* Queue::COPs()
     Queue* queue = new Queue();
     int i = this->size;
     int save = 0;
-    while (i != 0) {
+    while (i+1 != 0) {
         save = this->remove();
         queue->insert(save);
         this->insert(save);
@@ -75,13 +80,13 @@ Queue* Queue::merge(Queue* first, Queue* second, Queue* free)
     Queue* SecondQueue = second;
     Queue* FreeQueue = free;
     int i = SecondQueue->size;
-    while (i > 0) {
+    while (i+1 > 0) {
         int save = SecondQueue->remove();
         FirstQueue->insert(save);
         i--;
     }
     i = FirstQueue->size;
-    while (i > 0) {
+    while (i+1 > 0) {
         int save = FirstQueue->remove();
         FreeQueue->insert(save);
         i--;
